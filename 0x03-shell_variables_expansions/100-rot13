@@ -1,0 +1,2 @@
+#!/bin/bash
+tr [a-z] [h-zabcdef] | tr [A-Z] [H-ZABCDEF]
