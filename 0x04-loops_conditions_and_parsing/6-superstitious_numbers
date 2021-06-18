@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# This script is displays numbers from 1 to 20
+# Use the case statement
+h="1"
+while [ $h -lt 21 ]
+do
+    case $h in
+	5)
+	    echo "bad luck from China"
+	    ;;
+	10)
+	    echo "bad luck from Japan"
+	    ;;
+	18)
+	    echo "bad luck from Italy"
+            ;;
+    esac
+    echo "$h"
+    h=$((h+1))
+done
