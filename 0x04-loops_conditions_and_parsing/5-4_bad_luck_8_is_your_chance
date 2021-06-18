@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script is displaying "Holberton School" 10 times
+# but number iteration 4th "bad luck" and 8th "good luck"
+h="0"
+string="Holberton School"
+while [ $h -lt 10 ]
+do
+    if [ $h == 3 ]; then
+	echo "bad luck"
+    elif [ $h == 7 ]; then
+        echo "good luck"
+    else
+        echo "$string"
+    fi
+    h=$((h+1))
+done
