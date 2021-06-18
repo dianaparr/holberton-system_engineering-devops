@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This script is displaying "Holberton School" 10 times
+# but for the 9th iteration displays "Hi"
+h="0"
+string="Holberton School"
+while [ $h -lt 10 ]
+do
+    if [ $h == 9 ]; then
+	echo "Hi"
+    fi
+    echo "$string"
+    h=$((h+1))
+done
+
