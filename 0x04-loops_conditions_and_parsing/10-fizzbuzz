@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Displays numbers from 1 to 100 fizzbuzz
-for ((h=1 ; h < 100 ; h++));
+for ((h=1 ; h <= 100 ; h++));
 do
     if [ $((h % 3)) == 0 ] && [ $((h % 5)) == 0 ]; then
 	echo "FizzBuzz"
