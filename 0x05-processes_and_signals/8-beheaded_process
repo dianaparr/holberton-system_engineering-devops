@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Stopped our 7-highlander process use kill -9 that kill all processes
+# Use pgrep, option -f is set, the full command line is used
+kill -9 "$(pgrep -f 7-highlander)"
