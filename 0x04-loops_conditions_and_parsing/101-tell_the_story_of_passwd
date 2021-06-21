@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Displays the content of the file /etc/passwd
+# Make up a story based on file
+file="/etc/passwd"
+while IFS=":" read -r one two three four five six seven
+do
+    echo "The user $one is part of the $four gang, lives in $six and rides $seven. $three's place is protected by the passcode $two, more info about the user here: $five"
+done < "$file"
