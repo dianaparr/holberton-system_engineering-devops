@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Stopped our 4-to_infinity_and_beyond process use pkill
+# Is a wrapper around the pgrep program that only prints a list of matching processes
+pkill -f "4-to_infinity_and_beyond"
