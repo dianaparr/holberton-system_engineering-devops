@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Displays phrase indefinitely
+# sleep is a two-second suspension of the script
+h="0"
+while [ $h ]
+    do
+	echo "To infinity and beyond"
+	sleep 2
+    done
