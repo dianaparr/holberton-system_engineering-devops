@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Displays a list of currently running processes
+# Options: f, full-format; a, all process; x, all processes owned by you
+# u, user-oriented format
+# Use command grep that print lines matching a pattern
+ps -fuax | grep "bash"
