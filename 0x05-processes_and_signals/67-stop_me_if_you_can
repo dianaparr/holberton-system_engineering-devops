@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Stopped our 7-highlander process use pkill
+# Is a wrapper around the pgrep program that only prints a list of matching processes
+pkill -f "7-highlander"

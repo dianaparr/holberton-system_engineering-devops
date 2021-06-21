@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Displays phrase and receiving a SIGTERM signal
+# trap command allows you to catch signals and execute code when they occur
+trap "echo I am invincible!!!" SIGTERM
+h="0"
+while [ $h ]
+    do
+	echo "To infinity and beyond"
+	sleep 2
+    done
