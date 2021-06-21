@@ -4,3 +4,5 @@
 # u, user-oriented format
 # Use command grep that print lines matching a pattern
 ps -fuax | grep "bash"
+# To prevent shellcheck from processing one directive
+# shellcheck disable=SC2009
