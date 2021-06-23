@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Creates a file (path) containing its PID
+# Then kill and remove file
+path="/var/run/holbertonscript.pid"
+echo $$ > "$path"
+trap 'echo I hate the kill command & pgrep -f 100-process_and_pid_file | xargs kill -9 & rm -f $path' SIGTERM
+trap 'echo Y U no love me?!' SIGINT
+trap 'pgrep -f 100-process_and_pid_file | xargs kill -9 & rm -f $path' SIGQUIT
+h="0"
+while [ $h ]
+    do
+	echo "To infinity and beyond"
+	sleep 1
+    done
