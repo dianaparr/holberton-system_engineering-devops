@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Command netstat: shows the services listening to ports
+# Type information printed is controlled by: -p (PID and name program)
+# l (listening sockets)
+netstat -pl
