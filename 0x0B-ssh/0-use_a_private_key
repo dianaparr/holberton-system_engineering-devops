@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Script that uses ssh to connect to my server,
+# [Option -i]: selects a file from which the identity -PRIVATE KEY-.
+ssh -i ~/.ssh/holberton ubuntu@34.74.93.165
