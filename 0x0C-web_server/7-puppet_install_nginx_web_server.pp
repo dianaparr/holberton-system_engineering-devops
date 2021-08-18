@@ -8,7 +8,7 @@ package { 'nginx' :
 # Verificated if nginx have been install
 service { 'nginx':
   ensure  => running,
-  enabled => true,
+  enable => true,
 }
 
 # Command to redirect page
