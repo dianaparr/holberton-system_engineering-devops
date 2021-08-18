@@ -18,7 +18,7 @@ sed -i "/server_name _;/ a \\\trewrite ^/redirect_me https://www.nginx.com/resou
 sudo touch /var/www/html/custom_404.html
 sudo chmod 666 /var/www/html/custom_404.html
 echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
-sed -i "/rewrite/ a \\\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /var/www/html/custom_404.html;\n\t\tinternal;\n\t}" /etc/nginx/sites-available/default
+sed -i "/rewrite/ a \\\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\tinternal;\n\t}" /etc/nginx/sites-available/default
 # Step 6: Reload/restart Nginx with nginx command:
 # To force close and restart Nginx and related processes
 sudo /etc/init.d/nginx restart
