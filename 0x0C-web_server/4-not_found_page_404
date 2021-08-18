@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# configure a Ubuntu machine with Ngin-X with a custom 404 page
-
+# Configuring Nginx to use custom error pages
 sudo apt-get -y update
 sudo apt-get -y install nginx
 echo "Holberton School" > /var/www/html/index.nginx-debian.html
-sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=YvVonQ7LUJ0 permanent;' /etc/nginx/sites-available/default
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
-sed -i '/server_name _;/a error_page 404 /custom_404.html;\nlocation = /custom_404.html {\nroot /usr/share/nginx/html;\ninternal;\n}' /etc/nginx/sites-available/default
-sudo service nginx restart
+sed -i "/server_name _;/ a \\\trewrite ^/redirect_me https://www.nginx.com/resources/library/complete-nginx-cookbook/ permanent;" /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+sed -i "/server_name _;/ a \\\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}" /etc/nginx/sites-available/default
+sudo /etc/init.d/nginx restart
