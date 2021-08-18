@@ -1,21 +1,9 @@
 #!/usr/bin/env bash
 # Configuring Nginx to use custom error pages
-# Step 1: Install nginx: Update apt packaging system
 sudo apt-get -y update
 sudo apt-get -y install nginx
-# Step 2: Adjust the firewall to allow access to the service,
-# allow traffic on port 80
-sudo ufw allow 'Nginx HTTP'
-# Step 3: Adjust the document root /var/www/html
-sudo chmod 666 /var/www/html/index.nginx-debian.html
 echo "Holberton School" > /var/www/html/index.nginx-debian.html
-# Step 4: Implement permanent redirect,
-# use the built-in rewrite directive. Syntax: rewrite regex URL [flag]
 sed -i "/server_name _;/ a \\\trewrite ^/redirect_me https://www.nginx.com/resources/library/complete-nginx-cookbook/ permanent;" /etc/nginx/sites-available/default
-# Step 5: Create custom error page (custom_404.html)
-sudo chmod 666 /var/www/html/custom_404.html
 echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
 sed -i "/rewrite/ a \\\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}" /etc/nginx/sites-available/default
-# Step 6: Reload/restart Nginx with nginx command:
-# To force close and restart Nginx and related processes
 sudo /etc/init.d/nginx restart
