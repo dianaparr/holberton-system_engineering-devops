@@ -1,5 +1,5 @@
 # Script that configure an Nginx server
-package { 'get nginx' :
+package { 'nginx' :
   ensure   => 'latest',
   name     => 'nginx',
   provider => 'apt',
@@ -12,13 +12,13 @@ service { 'nginx':
 }
 
 # Command to redirect page
-exec { 'command one: to redirect' :
+exec { 'redirect' :
   provider => shell,
   command  => 'sudo sed -i "/server_name _;/ a \\\trewrite ^/redirect_me https://www.nginx.com/resources/library/complete-nginx-cookbook/ permanent;" /etc/nginx/sites-available/default',
 }
 
 # Command to show Holberton School in index
-exec { 'command two: index' :
+exec { 'index' :
   provider => shell,
   command  => 'echo "Holberton School" > /var/www/html/index.nginx-debian.html',
 }
