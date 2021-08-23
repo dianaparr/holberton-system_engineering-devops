@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Configure Nginx so that its HTTP response contains a custom header
+# Step 1: Install nginx: Update apt packaging system
+sudo apt-get -y update
+sudo apt-get -y install nginx
+# Step 2: Adjust the document root /var/www/html
+# Add the permissions (chmod in mode recursive): “rwxr-xr-x”
+sudo chmod -R 755 /var/www/html/
+sudo chmod 666 /var/www/html/index.nginx-debian.html
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+# Step 3: Implement permanent redirect,
+# use the built-in rewrite directive. Syntax: rewrite regex URL [flag]
+sudo sed -i "/server_name _;/ a \\\trewrite ^/redirect_me https://www.nginx.com/resources/library/complete-nginx-cookbook/ permanent;" /etc/nginx/sites-available/default
+# Step 4: Create custom error page (custom_404.html)
+sudo touch /var/www/html/custom_404.html
+sudo chmod 666 /var/www/html/custom_404.html
+echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+sudo sed -i "/rewrite/ a \\\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\tinternal;\n\t}" /etc/nginx/sites-available/default
+# Step 5: use the Nginx add_header directive
+sudo sed -i "/rewrite/ a \\\n\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
+# Step 6: Reload/restart Nginx with nginx command:
+# To force close and restart Nginx and related processes
+sudo /etc/init.d/nginx restart
