@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Script to HAProxy configuration file - Sections: frontend and backend
+# Step 1: Install haproxy to get a stable release of HAProxy 1.6
+sudo apt-get -y update
+sudo apt-get -y install haproxy=1.6.\*
+# Step 2: Add enable HAProxy to be started by the init script
+echo -e "ENABLED=1\n" >> /etc/default/haproxy
+# Step 3: Configurate sections
+echo -e "\nfrontend front-web\n\tbind *:80\n\tmode http\n\tdefault_backend back-web\n" >> /etc/haproxy/haproxy.cfg
+echo -e "backend back-web\n\tbalance roundrobin\n\tmode http\n\tserver 2651-web-01 35.231.62.24:80 check\n\tserver 2651-web-02 54.234.224.115:80 check\n" >> /etc/haproxy/haproxy.cfg
+sudo /etc/init.d/haproxy restart
