@@ -2,4 +2,4 @@
 # Activate again the web server running and listening on port 80 []
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 # reload the Nginx processes
-pkill -HUP | grep nginx
+pkill -s 1 nginx
