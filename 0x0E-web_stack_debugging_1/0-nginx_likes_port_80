@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Activate again the web server running and listening on port 80
+rm /etc/nginx/sites-enabled/default
+# create again a symbolic link [netstat -lpn]
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo /etc/init.d/nginx restart
