@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Activate again the web server running and listening on port 80 []
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-ps -ef | grep nginx
-pkill -HUP nginx
+# reload the Nginx processes
+kill -s 1 | pgrep nginx
