@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# añadir subdominios al dominio (tal) e imprimir información de estos: [hostname[domain/zone]]
+# Add subdomains to my domain and print subdomain information: [hostname[domain/zone]]
 
-DOMI=$1
-SUBDOMI=$2
+#DOMI=$1
+#SUBDOMI=$2
 
 # only answer_section
 to_record () {
@@ -15,11 +15,13 @@ to_ip () {
 
 # display information subdomains.
 # Output: The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]
+result_record="$(to_record "${1}")"
+result_destination="$(to_ip "${2}"."${1}")"
 if [ $# -eq 1 ]; then
-    result_record="$(to_record $1)"
-    result_destination="$(to_ip $2.$1)"
-    echo "The subdomain www is a $result_record record and points to $(to_ip www.$1)"
-    echo "The subdomain lb-01 is a $result_record record and points to $(to_ip lb-01.$1)"
-    echo "The subdomain web-01 is a $result_record record and points to $(to_ip web-01.$1)"
-    echo "The subdomain web-02 is a $result_record record and points to $(to_ip web-02.$1)"
+    echo "The subdomain www is a $result_record record and points to $(to_ip www."${1}")"
+    echo "The subdomain lb-01 is a $result_record record and points to $(to_ip lb-01."${1}")"
+    echo "The subdomain web-01 is a $result_record record and points to $(to_ip web-01."${1}")"
+    echo "The subdomain web-02 is a $result_record record and points to $(to_ip web-02."${1}")"
+else
+    echo "The subdomain ${2} is a $result_record record and points to $result_destination"
 fi
