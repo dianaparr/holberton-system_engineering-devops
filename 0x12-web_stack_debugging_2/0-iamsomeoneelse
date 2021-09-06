@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Use sudo to specify another user and run whoami command as privileged user
+# [[Users: /etc/passwd]]
+sudo -u "${1}" whoami
