@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Nginx running as the nginx user - script with max 7 lines
 sudo chmod 644 /etc/nginx/nginx.conf
-sudo sed -i '2 i user nginx;' /etc/nginx/nginx.conf
 sudo sed -i 's/80 default_server/8080 default_server/g' /etc/nginx/sites-available/default
 pkill apache2
 sudo -u nginx service nginx start
