@@ -15,16 +15,18 @@ def main():
     r_tasks = requests.get(
         'https://jsonplaceholder.typicode.com/todos/').json()
 
-    data_tasks = dict()
+    data_tasks = {}
     for emp in r_emp:
-        list_data = list()
-        for tasks in r_tasks:
-            if emp.get('id') == tasks.get('userId'):
-                name_emp = emp.get('username')
-                task_title = tasks.get('title')
-                task_status = tasks.get('completed')
-                dict_ = {"username": name_emp, "task": task_title,
-                         "completed": task_status}
+        list_data = []
+        r_emp_task = requests.get(
+            'https://jsonplaceholder.typicode.com/todos?userId={}'.format(
+                                                    emp.get('id'))).json()
+        for tasks in r_emp_task:
+            name_emp = emp.get('username')
+            task_title = tasks.get('title')
+            task_status = tasks.get('completed')
+            dict_ = {"username": name_emp, "task": task_title,
+                     "completed": task_status}
             list_data.append(dict_)
         data_tasks[emp.get('id')] = list_data
 
