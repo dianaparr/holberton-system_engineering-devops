@@ -4,14 +4,16 @@
 import requests
 
 
-def recurse(subreddit, hot_list=[], after=None):
+def recurse(subreddit, hot_list=[], after=""):
     """ Recursive function: This function queries the Reddit API and
-        returns a list containing the titles of all hot articles for a given subreddit.
+        returns a list containing the titles of all hot articles for a
+        given subreddit.
     """
     HEADERS = {'User-Agent': 'HotReddit/1.0.1'}
-    URL = 'https://www.reddit.com/r/{}/hot.json?after={}'.format(
-        subreddit, after)
-    r = requests.get(URL, headers=HEADERS)
+    LIMIT = 100
+    URL = 'https://www.reddit.com/r/{}/hot.json?limit={}&after={}'.format(
+        subreddit, LIMIT, after)
+    r = requests.get(URL, headers=HEADERS, allow_redirects=False)
     if r.status_code >= 400:
         return None
     response_json = r.json()
@@ -22,8 +24,8 @@ def recurse(subreddit, hot_list=[], after=None):
 
     #  base case
     after = response_json['data']['after']
-    # if es igual a None es porque no hay una pagina después,
-    # se extrajo el último resultado
+    # If it equals None it is because there is no page after,
+    #  the last result was extracted
     if after is None:
         return hot_list
     else:
